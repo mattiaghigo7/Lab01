@@ -29,6 +29,7 @@ public class Parole {
 		for (int i=0;i<parole.size();i++) {
 			if (parole.get(i).equals(s)) {
 				parole.remove(i);
+				
 			}
 		}
 	}
