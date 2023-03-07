@@ -2,12 +2,12 @@ package it.polito.tdp.Lab01.model;
 
 import java.util.*;
 
-public class Parole {
+public class Parole_ArrayList {
 		
-	private LinkedList<String> parole;
+	private ArrayList<String> parole;
 	
-	public Parole() {
-		this.parole = new LinkedList<String>();
+	public Parole_ArrayList() {
+		this.parole = new ArrayList<String>();
 	}
 	
 	public void addParola(String p) {
@@ -15,7 +15,7 @@ public class Parole {
 	}
 	
 	public List<String> getElenco() {
-		LinkedList<String> copia = new LinkedList<String>();
+		ArrayList<String> copia = new ArrayList<String>();
 		copia.addAll(parole);
 		copia.sort(null);
 		return copia;

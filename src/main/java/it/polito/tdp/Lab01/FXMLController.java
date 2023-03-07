@@ -2,7 +2,9 @@ package it.polito.tdp.Lab01;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-import it.polito.tdp.Lab01.model.Parole;
+
+import it.polito.tdp.Lab01.model.Parole_ArrayList;
+import it.polito.tdp.Lab01.model.Parole_LinkedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,7 +13,8 @@ import javafx.scene.control.TextField;
 
 public class FXMLController {
 	
-	Parole elenco = new Parole();
+//	Parole_LinkedList elenco = new Parole_LinkedList();
+	Parole_ArrayList elenco = new Parole_ArrayList();
 
     @FXML
     private ResourceBundle resources;
@@ -78,7 +81,8 @@ public class FXMLController {
         assert txtParola != null : "fx:id=\"txtParola\" was not injected: check your FXML file 'Scene.fxml'.";
         assert txtResult != null : "fx:id=\"txtResult\" was not injected: check your FXML file 'Scene.fxml'.";
         
-        elenco = new Parole() ;
+//        elenco = new Parole_LinkedList();
+      elenco = new Parole_ArrayList();
     }
 
 }
