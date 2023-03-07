@@ -50,6 +50,11 @@
             </TextArea>
             <HBox alignment="CENTER_RIGHT" prefHeight="39.0" prefWidth="278.0" spacing="10.0">
                <children>
+                  <Label fx:id="errorCancella" prefHeight="17.0" prefWidth="133.0" textFill="RED">
+                     <HBox.margin>
+                        <Insets left="10.0" />
+                     </HBox.margin>
+                  </Label>
                   <Button fx:id="btnCancella" mnemonicParsing="false" onAction="#doCancella" text="Cancella" />
                   <Button fx:id="btnReset" alignment="CENTER_RIGHT" contentDisplay="RIGHT" mnemonicParsing="false" onAction="#doReset" text="Reset">
                      <HBox.margin>

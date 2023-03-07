@@ -11,7 +11,15 @@ public class Parole_LinkedList {
 	}
 	
 	public void addParola(String p) {
-		parole.add(p);
+		boolean esiste = false;
+		for (int i=0;i<parole.size();i++) {
+			if (p.toUpperCase().compareTo(parole.get(i).toUpperCase())==0) {
+				esiste=true;
+			}
+		}
+		if (esiste==false) {
+		    parole.add(p.toLowerCase());
+		}
 	}
 	
 	public List<String> getElenco() {
@@ -25,13 +33,15 @@ public class Parole_LinkedList {
 		parole.clear();
 	}
 	
-	public void cancella(String s) {
+	public boolean cancella(String s) {
+		boolean esiste = false;
 		for (int i=0;i<parole.size();i++) {
 			if (parole.get(i).equals(s)) {
 				parole.remove(i);
-				
+				esiste=true;
 			}
 		}
+		return esiste;
 	}
 
 }

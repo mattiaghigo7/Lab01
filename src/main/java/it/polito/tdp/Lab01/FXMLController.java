@@ -2,19 +2,19 @@ package it.polito.tdp.Lab01;
 
 import java.net.URL;
 import java.util.ResourceBundle;
-
 import it.polito.tdp.Lab01.model.Parole_ArrayList;
 import it.polito.tdp.Lab01.model.Parole_LinkedList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class FXMLController {
 	
-//	Parole_LinkedList elenco = new Parole_LinkedList();
-	Parole_ArrayList elenco = new Parole_ArrayList();
+	Parole_LinkedList elenco = new Parole_LinkedList();
+//	Parole_ArrayList elenco = new Parole_ArrayList();
 
     @FXML
     private ResourceBundle resources;
@@ -32,6 +32,9 @@ public class FXMLController {
     private Button btnReset;
 
     @FXML
+    private Label errorCancella;
+    
+    @FXML
     private TextField txtParola;
 
     @FXML
@@ -43,6 +46,7 @@ public class FXMLController {
     @FXML
     void doInsert(ActionEvent event) {
     	long startTime = System.nanoTime();
+    	errorCancella.setText("");
     	txtResult.clear();
     	txtTempi.clear();
     	String p = txtParola.getText();
@@ -57,21 +61,33 @@ public class FXMLController {
 
     @FXML
     void doReset(ActionEvent event) {
+    	long startTime = System.nanoTime();
+    	errorCancella.setText("");
     	elenco.reset();
+    	txtParola.clear();
     	txtResult.clear();
-    	txtTempi.appendText(""+System.nanoTime()+"\n");
+    	txtTempi.clear();
+    	long endTime = System.nanoTime();
+		txtTempi.appendText(""+(endTime-startTime)+"\n");
     }
 
     @FXML
     void doCancella(ActionEvent event) {
+    	long startTime = System.nanoTime();
+    	txtTempi.clear();
+    	errorCancella.setText("");
     	String p = txtParola.getText();
-    	elenco.cancella(p);
+    	boolean a = elenco.cancella(p);
     	txtResult.clear();
+    	if (a==false) {
+    		errorCancella.setText("Parola inesistente");
+    	}
     	for (int i=0;i<elenco.getElenco().size();i++) {
     		txtResult.appendText(elenco.getElenco().get(i)+"\n");
     	}
     	txtParola.clear();
-    	txtTempi.appendText(""+System.nanoTime()+"\n");
+    	long endTime = System.nanoTime();
+		txtTempi.appendText(""+(endTime-startTime)+"\n");
     }
     
     @FXML
@@ -81,8 +97,8 @@ public class FXMLController {
         assert txtParola != null : "fx:id=\"txtParola\" was not injected: check your FXML file 'Scene.fxml'.";
         assert txtResult != null : "fx:id=\"txtResult\" was not injected: check your FXML file 'Scene.fxml'.";
         
-//        elenco = new Parole_LinkedList();
-      elenco = new Parole_ArrayList();
+        elenco = new Parole_LinkedList();
+//      elenco = new Parole_ArrayList();
     }
 
 }
